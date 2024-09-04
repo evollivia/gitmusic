@@ -10,8 +10,8 @@ class Board(Base):
     __tablename__ = 'board'
 
     bno: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)
-    title: Mapped[str] = mapped_column(String(250),index=True)
-    userid: Mapped[str] = mapped_column(String(50),ForeignKey('member.userid')) # Member의 userid
+    title: Mapped[str] = mapped_column(String(30),index=True)
+    userid: Mapped[str] = mapped_column(String(20),ForeignKey('member.userid')) # Member의 userid
     regdate: Mapped[datetime] = mapped_column(default=datetime.now)
     views: Mapped[int] = mapped_column(default=0)
     contents: Mapped[str]= mapped_column(Text)
@@ -26,7 +26,7 @@ class BoardFile(Base):
 
     fno: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)
     bno: Mapped[int] = mapped_column(ForeignKey('board.bno'), index=True)
-    fname: Mapped[str] = mapped_column(String(250),nullable=False)
+    fname: Mapped[str] = mapped_column(String(50),nullable=False)
     fsize: Mapped[int] = mapped_column(default=0)
     regdate: Mapped[datetime] = mapped_column(default=datetime.now)
     board = relationship("Board", back_populates="files")
@@ -37,7 +37,7 @@ class Reply(Base):
 
     rno: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)
     reply: Mapped[str] = mapped_column(String(250),index=True)
-    userid: Mapped[str] = mapped_column(String(250),ForeignKey('member.userid'), index=True)
+    userid: Mapped[str] = mapped_column(String(20),ForeignKey('member.userid'), index=True)
     regdate: Mapped[datetime] = mapped_column(default=lambda: datetime.now().replace(microsecond=0))
     bno: Mapped[int] = mapped_column(ForeignKey('board.bno'))
     rpno: Mapped[int] = mapped_column(ForeignKey('reply.rno'))

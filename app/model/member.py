@@ -10,10 +10,10 @@ class Member(Base):
     __tablename__ = 'member'
 
     mno: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)
-    userid: Mapped[str] = mapped_column(String(250),index=True, unique=True)
-    passwd: Mapped[str]= mapped_column(String(250))
-    name: Mapped[str]= mapped_column(String(250))
-    email: Mapped[str]= mapped_column(String(250))
+    userid: Mapped[str] = mapped_column(String(20),index=True, unique=True)
+    passwd: Mapped[str]= mapped_column(String(30))
+    name: Mapped[str]= mapped_column(String(20))
+    email: Mapped[str]= mapped_column(String(20))
     regdate: Mapped[datetime] = mapped_column(default=datetime.now)
     storage_items = relationship("Storage", backref="member")
     payment = relationship("Payment", back_populates="member", uselist=False)

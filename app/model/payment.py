@@ -10,7 +10,7 @@ class Payment(Base):
     __tablename__ = 'payment'
 
     pno: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)
-    userid: Mapped[str] = mapped_column(String(50),ForeignKey('member.userid'))
+    userid: Mapped[str] = mapped_column(String(20),ForeignKey('member.userid'))
     payment_date: Mapped[datetime] = mapped_column(default=datetime.now)
     reg_date: Mapped[datetime] = mapped_column(default=lambda: datetime.now() + timedelta(days=31))
     member = relationship("Member", back_populates="payment")
