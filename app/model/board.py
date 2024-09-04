@@ -8,7 +8,6 @@ from app.model.base import Base
 # 게시판 테이블
 class Board(Base):
     __tablename__ = 'board'
-    __table_args__ = {'sqlite_autoincrement': True}
 
     bno: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)
     title: Mapped[str] = mapped_column(String(250),index=True)
@@ -24,7 +23,6 @@ class Board(Base):
 # 게시판 파일업로드 테이블
 class BoardFile(Base):
     __tablename__ = 'boardfile'
-    __table_args__ = {'sqlite_autoincrement': True}
 
     fno: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)
     bno: Mapped[int] = mapped_column(ForeignKey('board.bno'), index=True)
@@ -36,7 +34,6 @@ class BoardFile(Base):
 # 게시판 댓글
 class Reply(Base):
     __tablename__ = 'reply'
-    __table_args__ = {'sqlite_autoincrement': True}
 
     rno: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, index=True)
     reply: Mapped[str] = mapped_column(String(250),index=True)
