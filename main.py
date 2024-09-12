@@ -28,7 +28,7 @@ app.add_middleware(SessionMiddleware, secret_key='20240822110005')
 
 templates = Jinja2Templates(directory="views/templates") # jinja2 설정
 app.mount('/static', StaticFiles(directory='views/static'), name='static')
-app.mount("/files", StaticFiles(directory="D:/test"), name="files")
+# app.mount("/files", StaticFiles(directory="D:/test"), name="files")
 
 app.include_router(member_router, prefix='/member')
 app.include_router(board_router, prefix='/board')

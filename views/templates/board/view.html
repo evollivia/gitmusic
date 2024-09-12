@@ -60,7 +60,7 @@
 {% block main %}
 <main>
     <h2 class="text-center mb-4"><a class="mainpage" href="/board/list/1">자유게시판</a></h2>
-    <div class="card" style="padding: 30px">
+    <div class="card" >
         <div class="card-body">
             <!-- Post Title -->
             <div class="mb-3 row">
@@ -159,7 +159,7 @@
 
                 <!-- 댓글 쓰기 -->
                 <div class="card mt-4">
-                    <div class="card-body">
+                    <div class="card-body" >
                         <h4 class="card-title">댓글 쓰기 ID : {{ request.session.logined_uid }}</h4>
                         <form name="replyfrm" id="replyfrm" class="form-group row">
                             <div class="mb-3">
